@@ -1,20 +1,28 @@
-import java.util.Scanner;
+import java.io.Serial;
+import java.io.Serializable;
 
-class Company{
+class Company implements Serializable{
+    @Serial
+    private static final long serialVersionUID = 3812017177088226528L;
 
-    private final int MAX_EMPLOYEE = 3;
-    private int current_number_employee = 0;
-    Scanner sc = new Scanner(System.in);
-    Employee[] tab_of_employess = new Employee[this.MAX_EMPLOYEE];
+    private static final int MAX_EMPLOYEE = 3; 
+    private Employee[] tab = new Employee[MAX_EMPLOYEE];
+    private int numberEmployee = 0;
 
-    void addUser(){
-        System.out.println("Enter name of new employe:");
-        String name = sc.nextLine();
-        System.out.println("Enter surename: ");
-        String surename = sc.nextLine();
-        System.out.println("Enter gross sallary in USD:  ");
-        double sallary = sc.nextDouble();
+    void addEmployee(Employee emp){
+        if(numberEmployee <= MAX_EMPLOYEE){
+            tab[numberEmployee] = emp; 
+            numberEmployee ++;
+        } else {
+            System.out.println("The comapany is overloead");
+        }
+    }
 
-        this.tab_of_employess[current_number_employee] = new Employee(name,surename,sallary);
+    void showEmployee(){
+        for(Employee emp: tab){
+            if(emp != null){
+                System.out.println(emp.toString()); 
+            }
+        }
     }
 }

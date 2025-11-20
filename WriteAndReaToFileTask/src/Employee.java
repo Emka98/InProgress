@@ -1,17 +1,24 @@
-class Employee extends Person{
+import java.io.Serializable;
+
+class Employee extends Person implements Serializable{
 
     private double sallary;
 
-    Employee(String name, String surename, double sallary){
-        super(name,surename);
+    public Employee(String name, String surname, double sallary){
+        super(name, surname);
         this.sallary = sallary;
     }
 
     public double getSallary() {
         return sallary;
     }
-    
+
     public void setSallary(double sallary) {
         this.sallary = sallary;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Sallary USD: " + sallary;
+    }
 }

@@ -1,26 +1,32 @@
-class Person {
+import java.io.Serializable;
+
+class Person implements Serializable {
 
     private String name;
-    private String surename;
+    private String surname;
 
-    Person(String name, String surename ){
+    public Person(String name, String surname){
         this.name = name;
-        this.surename = surename;
+        this.surname = surname;
     }
 
-    public String getName() {
-        return name;
+    public String getName(){
+        return this.name; 
     }
 
-    public void setName(String name) {
+    public void setName(String name){
         this.name = name;
     }
 
-    public String getSurename() {
-        return surename;
+    public String getSurename(){
+        return this.name; 
+    }
+    public void setSurename(String surname){
+        this.surname = surname;
     }
 
-    public void setSurename(String surename) {
-        this.surename = surename;
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " Surename: " + this.surname;
     }
 }
